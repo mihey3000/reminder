@@ -14,9 +14,9 @@
       return {};
     },
     async mounted() {
-      console.log({
-        trans: window.i18n.trans("auth.failed"),
-      });
+      //   console.log({
+      //       trans: this.translate("auth.failed"),
+      //   });
     },
     methods: {},
   };
