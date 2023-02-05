@@ -10,10 +10,17 @@ window._ = _;
 import axios from 'axios';
 window.axios = axios;
 
+
+window.axios.defaults.withCredentials = true;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-window.token = document.head.querySelector('meta[name="csrf-token"]');
-window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 window.axios.defaults.headers.common['Accept'] = 'application/json';
+
+const response = await axios.get('/sanctum/csrf-cookie')
+if (_.isEmpty(response?.config?.headers['X-XSRF-TOKEN'])) {
+	throw new Error('token not valid')
+}
+window.token = response.config.headers['X-XSRF-TOKEN']
+window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
