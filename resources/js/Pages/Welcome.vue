@@ -42,22 +42,25 @@
         v-if="$page.props.auth.user"
         :href="route('dashboard')"
         class="text-sm text-gray-700 dark:text-gray-500 underline"
-        >{{ translate("header.dashboard") }}</Link
       >
+        {{ translate("header.dashboard") }}
+      </Link>
 
       <template v-else>
         <Link
           :href="route('login')"
           class="text-sm text-gray-700 dark:text-gray-500 underline"
-          >{{ translate("header.log_in") }}</Link
         >
+          {{ translate("header.log_in") }}
+        </Link>
 
         <Link
           v-if="canRegister"
           :href="route('register')"
           class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline"
-          >{{ translate("header.register") }}</Link
         >
+          {{ translate("header.register") }}
+        </Link>
       </template>
     </div>
 

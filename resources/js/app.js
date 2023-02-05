@@ -6,6 +6,7 @@ import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import { I18n, getActiveLanguage, isLoaded } from 'laravel-vue-i18n'
+import defaultMixin from './mixins/defaultMixin'
 
 window.addEventListener("load", async function () {
 
@@ -29,6 +30,7 @@ window.addEventListener("load", async function () {
 		setup({ el, App, props, plugin }) {
 			return createApp({ render: () => h(App, props) })
 				.use(plugin)
+				.mixin(defaultMixin)
 				.use(ZiggyVue, Ziggy)
 				.mount(el);
 		},
